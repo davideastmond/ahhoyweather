@@ -12,8 +12,9 @@ export function getTimeOfDayRangeForecast(
   const result: Partial<Record<TimeOfDay, PirateForecastData>> = {};
 
   for (const data of hourlyData) {
-    const hour = extractHourOfDay(data.time, timeZone);
-    const range: TimeOfDay = extractTimeRange(hour);
+    const range: TimeOfDay = extractTimeRange(
+      extractHourOfDay(data.time, timeZone)
+    );
     if (!result[range]) {
       result[range] = data;
     }

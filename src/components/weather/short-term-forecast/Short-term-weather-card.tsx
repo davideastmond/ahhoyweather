@@ -58,7 +58,7 @@ const WeatherIconAndCondition = (element: PirateForecastData) => (
 );
 
 const TemperatureComponent = (element: PirateForecastData) => (
-  <Box display="flex" alignContent={"center"} flexWrap={"wrap"} ml={2}>
+  <Box display="flex" alignContent={"center"} ml={2} flexDirection={"column"}>
     <Typography
       fontSize={
         fontTheme.ShortTermWeather.weatherDataCard.temperature.main
@@ -76,12 +76,13 @@ const TemperatureComponent = (element: PirateForecastData) => (
       >
         Feels like
       </Typography>
-      <Typography>
-        fontSize=
-        {
+      <Typography
+        fontSize={
           fontTheme.ShortTermWeather.weatherDataCard.temperature
             .apparentTemperature.main.titleFontSize
         }
+      >
+        {formatTemperature(element.apparentTemperature)}
       </Typography>
     </Box>
   </Box>
