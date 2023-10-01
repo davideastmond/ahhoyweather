@@ -13,7 +13,11 @@ export function ForecastContainer({ title, data }: ForecastContainerProps) {
   if (!data) return null;
   return (
     <Box component={"div"} mt={2}>
-      <Typography variant="h6" color={COLOR_PALLET.ghostWhite.hex}>
+      <Typography
+        variant="h6"
+        color={COLOR_PALLET.ghostWhite.hex}
+        textAlign={"center"}
+      >
         {title}
       </Typography>
       <CurrentWeatherComponent data={data} />

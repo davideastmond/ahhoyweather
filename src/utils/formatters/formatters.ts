@@ -7,12 +7,12 @@ export function formatTemperature(temperature: number, unit?: Unit): string {
 
   switch (unit) {
     case "si":
-      return `${temperature.toFixed(1)}° C`;
+      return `${temperature.toFixed(0)}° C`;
     case "us":
-      return `${temperature.toFixed(1)}° F`;
+      return `${temperature.toFixed(0)}° F`;
     default:
       // Default will be si
-      return `${temperature.toFixed(1)}° C`;
+      return `${temperature.toFixed(0)}° C`;
   }
 }
 

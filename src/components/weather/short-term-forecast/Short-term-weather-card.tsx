@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { PirateForecastData } from "../../../data/locations/models/pirate-client-forecast-result";
 import { TimeOfDay } from "../../../data/locations/models/short-term-forcast-ranges";
+import { COLOR_PALLET } from "../../../stylings/color-pallet/color-pallet";
 import { fontTheme } from "../../../stylings/fonts/font-theme";
 import { formatTemperature } from "../../../utils/formatters/formatters";
 import { capitalizeFirstLetter } from "../../../utils/formatters/string-formatters";
@@ -43,7 +44,11 @@ function ShortTermWeatherCard({
 }
 
 const WeatherIconAndCondition = (element: PirateForecastData) => (
-  <Box display={"flex"} flexDirection={"column"}>
+  <Box
+    display={"flex"}
+    flexDirection={"column"}
+    justifyContent={"space-evenly"}
+  >
     <WeatherIconComponent size={IconSize.sm} icon={element.icon} />
     <Typography
       textAlign={"center"}
@@ -69,6 +74,7 @@ const TemperatureComponent = (element: PirateForecastData) => (
     </Typography>
     <Box display="flex" flexDirection={"column"}>
       <Typography
+        color={COLOR_PALLET.lightBlue.hex}
         fontSize={
           fontTheme.ShortTermWeather.weatherDataCard.temperature
             .apparentTemperature.title.titleFontSize
