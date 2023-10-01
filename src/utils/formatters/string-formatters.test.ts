@@ -9,6 +9,7 @@ describe("String formatter tests", () => {
       ["lOWERCASE", "LOWERCASE"],
       ["be", "Be"],
       ["n", "N"],
+      [undefined as any, ""],
     ];
     test.each(cases)("given `%s` as argument, returns `%s`", (arg, res) => {
       expect(capitalizeFirstLetter(arg)).toBe(res);
