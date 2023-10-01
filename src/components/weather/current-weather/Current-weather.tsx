@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, styled } from "@mui/material";
 import { PirateClientForeCastResult } from "../../../data/locations/models/pirate-client-forecast-result";
 import { COLOR_PALLET } from "../../../stylings/color-pallet/color-pallet";
 import { fontTheme } from "../../../stylings/fonts/font-theme";
@@ -62,7 +62,7 @@ function CurrentWeatherComponent({ data }: CurrentWeatherComponentProps) {
           </Typography>
         </Box>
       </Box>
-      <Box component={"div"} display="flex">
+      <FlexContentBox component={"div"} display="flex" id="details">
         <WeatherDataCard
           label="feels-like"
           title="Feels like"
@@ -100,9 +100,14 @@ function CurrentWeatherComponent({ data }: CurrentWeatherComponentProps) {
             />,
           ]}
         />
-      </Box>
+      </FlexContentBox>
     </StyledCardContainer>
   );
 }
 
+const FlexContentBox = styled(Box)((props) => ({
+  [props.theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+  },
+}));
 export { CurrentWeatherComponent };
