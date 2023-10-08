@@ -1,3 +1,5 @@
+import { Unit } from "../../unit";
+
 export interface PirateClientForeCastResult {
   latitude: number;
   longitude: number;
@@ -10,6 +12,9 @@ export interface PirateClientForeCastResult {
     data: PirateForecastData[];
   };
   alerts: string[];
+  flags: {
+    units: Unit;
+  };
 }
 
 export interface PirateForecastData {
@@ -28,13 +33,15 @@ export interface PirateForecastData {
   uvIndex: number;
 }
 
-interface PirateClientDailyResult extends PirateForecastData {
+export interface PirateClientDailyResult extends PirateForecastData {
   sunriseTime: number;
   sunsetTime: number;
   temperatureHigh: number;
   temperatureLow: number;
   apparentTemperatureHigh: number;
   apparentTemperatureLow: number;
+  precipAccumulation: number;
+  precipType: PrecipitationType;
 }
 
 export enum WeatherIcon {
@@ -48,4 +55,11 @@ export enum WeatherIcon {
   Cloudy = "cloudy",
   PartlyCloudyDay = "partly-cloudy-day",
   PartlyCloudyNight = "partly-cloudy-night",
+}
+
+export enum PrecipitationType {
+  Rain = "rain",
+  Snow = "snow",
+  Sleet = "sleet",
+  None = "none",
 }

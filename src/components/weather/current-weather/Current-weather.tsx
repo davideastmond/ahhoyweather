@@ -4,7 +4,7 @@ import { COLOR_PALLET } from "../../../stylings/color-pallet/color-pallet";
 import { fontTheme } from "../../../stylings/fonts/font-theme";
 import { formatDateTime } from "../../../utils/formatters/date-time-formatters";
 import {
-  formatHumidity,
+  formatPercentage,
   formatTemperature,
 } from "../../../utils/formatters/formatters";
 import { formatWindSpeed } from "../../../utils/formatters/wind-formatters";
@@ -25,11 +25,22 @@ Visibilitly
 // Shows current weather
 interface CurrentWeatherComponentProps {
   data: Partial<PirateClientForeCastResult>;
+  title: string;
 }
-function CurrentWeatherComponent({ data }: CurrentWeatherComponentProps) {
+function CurrentWeatherComponent({
+  data,
+  title,
+}: CurrentWeatherComponentProps) {
   return (
-    <StyledCardContainer component={"div"} mt={2}>
+    <StyledCardContainer
+      component={"div"}
+      mt={2}
+      className="styled-card-container"
+    >
       <Box>
+        <Box id="location-title">
+          <Typography color={COLOR_PALLET.paynesGray.hex}>{title}</Typography>
+        </Box>
         <Typography>
           {formatDateTime(data.currently?.time!, data.timezone!)}
         </Typography>
@@ -47,7 +58,7 @@ function CurrentWeatherComponent({ data }: CurrentWeatherComponentProps) {
             fontSize={fontTheme.currentWeather.temperature.titleFontSize}
             color={COLOR_PALLET.putridGelb.hex}
           >
-            {formatTemperature(data.currently?.temperature!)}
+            {formatTemperature(data.currently?.temperature!, data.flags?.units)}
           </Typography>
         </Box>
         <Box ml={2}>
@@ -69,7 +80,10 @@ function CurrentWeatherComponent({ data }: CurrentWeatherComponentProps) {
           titleStylings={{
             fontSize: fontTheme.currentWeather.weatherDataCard.titleFontSize,
           }}
-          content={formatTemperature(data.currently?.apparentTemperature!)}
+          content={formatTemperature(
+            data.currently?.apparentTemperature!,
+            data.flags?.units
+          )}
           containerStylings={{ marginLeft: 2 }}
         />
         <WeatherDataCard
@@ -78,7 +92,7 @@ function CurrentWeatherComponent({ data }: CurrentWeatherComponentProps) {
           titleStylings={{
             fontSize: fontTheme.currentWeather.weatherDataCard.titleFontSize,
           }}
-          content={formatHumidity(data.currently?.humidity!)}
+          content={formatPercentage(data.currently?.humidity!)}
           containerStylings={{ marginLeft: 2 }}
         />
         <WeatherDataCard
@@ -86,7 +100,8 @@ function CurrentWeatherComponent({ data }: CurrentWeatherComponentProps) {
           title="Wind speed"
           content={formatWindSpeed(
             data.currently?.windSpeed!,
-            data.currently?.windBearing
+            data.currently?.windBearing,
+            data.flags?.units
           )}
           containerStylings={{ marginLeft: 2 }}
           children={[
@@ -95,7 +110,8 @@ function CurrentWeatherComponent({ data }: CurrentWeatherComponentProps) {
               title={"Wind gust"}
               content={formatWindSpeed(
                 data.currently?.windGust!,
-                data.currently?.windBearing
+                data.currently?.windBearing,
+                data.flags?.units
               )}
             />,
           ]}

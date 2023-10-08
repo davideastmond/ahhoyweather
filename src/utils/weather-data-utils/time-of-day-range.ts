@@ -30,7 +30,5 @@ function extractTimeRange(hourOfDay: number): TimeOfDay {
   const res = SHORT_TERM_FORECAST_RANGE.filter((range) => {
     return hourOfDay <= range.max && hourOfDay >= range.min;
   })[0];
-
-  console.log(res);
   return res.timeOfDay;
 }

@@ -17,5 +17,8 @@ type CardinalDirection =
   | "nnw";
 
 export type WindBearing = {
-  [keyof in CardinalDirection]: { min: number; max: number };
+  [keyof in CardinalDirection]: {
+    min: number;
+    max: number;
+  };
 };

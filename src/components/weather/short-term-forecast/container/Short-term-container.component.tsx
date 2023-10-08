@@ -1,16 +1,12 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Typography,
-  styled,
-} from "@mui/material";
+import { AccordionSummary, Box, Typography } from "@mui/material";
 import { PirateClientForeCastResult } from "../../../../data/locations/models/pirate-client-forecast-result";
 import { TimeOfDay } from "../../../../data/locations/models/short-term-forcast-ranges";
-import { COLOR_PALLET } from "../../../../stylings/color-pallet/color-pallet";
 import { getTimeOfDayRangeForecast } from "../../../../utils/weather-data-utils/time-of-day-range";
+import {
+  CustomStyledAccordionDetails,
+  StyledAccordion,
+} from "../../../containers/Styled-accordion/Styled-accordion";
 import ShortTermWeatherCard from "../Short-term-weather-card";
 
 interface ShortTermContainerProps {
@@ -42,41 +38,7 @@ function getDetails(props: ShortTermContainerProps): JSX.Element[] {
     <ShortTermWeatherCard
       element={forecastData}
       timeOfDay={timeOfDay as TimeOfDay}
+      unit={props.data.flags.units}
     />
   ));
 }
-
-const StyledAccordion = styled(Accordion)(() => ({
-  "&.MuiAccordion-root": {
-    border: `1px solid ${COLOR_PALLET.lightBlue.hex}`,
-    borderRadius: "20px",
-  },
-  "& .MuiButtonBase-root": {
-    backgroundColor: COLOR_PALLET.midnight.hex,
-    borderTop: `1px solid ${COLOR_PALLET.lightBlue.hex}`,
-    borderRadius: "20px",
-    paddingBottom: "2px ",
-  },
-  "& .MuiCollapse-root": {
-    backgroundColor: COLOR_PALLET.midnight.hex,
-    borderBottomLeftRadius: "20px",
-    borderBottomRightRadius: "20px",
-  },
-  "& .Mui-expanded": {
-    borderBottomLeftRadius: "0px",
-    borderBottomRightRadius: "0px",
-  },
-}));
-
-const CustomStyledAccordionDetails = styled(AccordionDetails)((props) => ({
-  "&.MuiAccordionDetails-root": {
-    border: "0",
-  },
-  [props.theme.breakpoints.up("lg")]: {
-    display: "flex",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-    borderRadius: "20px",
-    border: `1px solid ${COLOR_PALLET.lightBlue.hex}`,
-  },
-}));

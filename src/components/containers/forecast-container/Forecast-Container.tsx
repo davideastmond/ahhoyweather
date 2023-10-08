@@ -1,7 +1,7 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { PirateClientForeCastResult } from "../../../data/locations/models/pirate-client-forecast-result";
-import { COLOR_PALLET } from "../../../stylings/color-pallet/color-pallet";
 import { CurrentWeatherComponent } from "../../weather/current-weather/Current-weather";
+import { SevenDayForecastContainerComponent } from "../../weather/seven-day-forecast/container/Seven-day-forecast-container.component";
 import { ShortTermContainerComponent } from "../../weather/short-term-forecast/container/Short-term-container.component";
 
 interface ForecastContainerProps {
@@ -13,15 +13,9 @@ export function ForecastContainer({ title, data }: ForecastContainerProps) {
   if (!data) return null;
   return (
     <Box component={"div"} mt={2}>
-      <Typography
-        variant="h6"
-        color={COLOR_PALLET.ghostWhite.hex}
-        textAlign={"center"}
-      >
-        {title}
-      </Typography>
-      <CurrentWeatherComponent data={data} />
+      <CurrentWeatherComponent data={data} title={title} />
       <ShortTermContainerComponent data={data} />
+      <SevenDayForecastContainerComponent data={data} />
     </Box>
   );
 }
