@@ -8,11 +8,11 @@ export function formatPrecipitation(amount: number, unit?: Unit): string {
   // Default is milimeteres (metric)
   const defaultLabel: string = `${amount}mm`;
   switch (unit) {
-    case "si":
-      return defaultLabel;
     case "uk":
     case "us":
       return `${amount}in`;
+    case "si":
+    case "ca":
     default:
       return defaultLabel;
   }
