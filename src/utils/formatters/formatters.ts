@@ -20,7 +20,7 @@ export function formatTime(unixTimeData: number): string {
   return dayjs(unixTimeData).format("MMMM D, YYYY");
 }
 
-export function formatHumidity(humidity: number): string {
-  if (isNil(humidity)) return "";
-  return `${humidity * 100} %`;
+export function formatPercentage(value: number): string {
+  if (isNil(value)) return "";
+  return `${(value * 100).toFixed(0)} %`;
 }
