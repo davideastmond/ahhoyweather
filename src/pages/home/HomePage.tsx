@@ -34,11 +34,18 @@ function HomePage() {
     coords: Coords;
   }) => {
     resetErrorMessages();
-    const res = await fetchForcast(coords, units as Unit);
-    setStateCoords(coords);
-    setForecastData(res);
-    setForecastDataTitle(place_name);
-    setIsBusy(false);
+    setIsBusy(true);
+    try {
+      const res = await fetchForcast(coords, units as Unit);
+      setStateCoords(coords);
+      setForecastData(res);
+      setForecastDataTitle(place_name);
+    } catch (exception: any) {
+      setHasError(true);
+      setErrorMessage("Sorry, we ran into a problem.");
+    } finally {
+      setIsBusy(false);
+    }
   };
 
   useEffect(() => {
@@ -83,15 +90,12 @@ function HomePage() {
   };
   return (
     <Box>
-      <header>
-        <Typography
-          variant="h2"
-          textAlign={"center"}
-          color={COLOR_PALLET.ghostWhite.hex}
-        >
-          Ah-hoy Weather
-        </Typography>
-      </header>
+      <Box component={"header"} mt={2}>
+        <StylizedTitle textAlign={"center"} color={COLOR_PALLET.ghostWhite.hex}>
+          Ahoy!
+        </StylizedTitle>
+        <StylizedSubtitle textAlign={"center"}>Weather</StylizedSubtitle>
+      </Box>
       <Box>
         <UnitsToggle
           onToggle={handleUnitsToggle}
@@ -132,6 +136,26 @@ function HomePage() {
 const CustomStyledAlert = styled(Alert)(() => ({
   "&.MuiAlert-root": {
     background: "none",
+  },
+}));
+
+const StylizedTitle = styled(Typography)(() => ({
+  "&.MuiTypography-root": {
+    textShadow: `0.3rem 0.3rem ${COLOR_PALLET.charcoal.hex}`,
+    transform: "rotate(-5deg)",
+    color: COLOR_PALLET.ghostWhite.hex,
+    fontSize: "6rem",
+    fontFamily: "Georgia",
+    textTransform: "uppercase",
+  },
+}));
+
+const StylizedSubtitle = styled(Typography)(() => ({
+  "&.MuiTypography-root": {
+    color: COLOR_PALLET.ghostWhite.hex,
+    fontFamily: "Georgia",
+    textTransform: "uppercase",
+    fontSize: "2rem",
   },
 }));
 
