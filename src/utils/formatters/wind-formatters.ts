@@ -9,17 +9,21 @@ export function formatWindSpeed(
 ): string {
   if (isNil(windSpeed)) return "";
   switch (unit) {
-    case "si":
-      return `${windSpeed} km/h ${getWindBearing(windBearing) || ""}`;
     case "us":
-      return `${windSpeed} mph ${getWindBearing(windBearing) || ""}`;
+      return `${Math.ceil(windSpeed).toFixed(0)} mph ${
+        getWindBearing(windBearing) || ""
+      }`;
+    case "si":
+
     default:
       // Default is si
-      return `${windSpeed} km/h ${getWindBearing(windBearing) || ""}`;
+      return `${Math.ceil(windSpeed * 3.6).toFixed(0)} km/h ${
+        getWindBearing(windBearing) || ""
+      }`;
   }
 }
 
-function getWindBearing(windBearing?: number): string | undefined {
+export function getWindBearing(windBearing?: number): string | undefined {
   if (!windBearing) return undefined;
 
   const bearings: WindBearing = {
@@ -88,6 +92,8 @@ function getWindBearing(windBearing?: number): string | undefined {
       max: 359.9,
     },
   };
+
+  if (windBearing === 360) return "N";
   return Object.entries(bearings)
     .filter(([, value]) => {
       return windBearing >= value.min && windBearing <= value.max;
