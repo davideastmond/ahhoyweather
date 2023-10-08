@@ -90,12 +90,7 @@ function HomePage() {
   };
   return (
     <Box>
-      <Box component={"header"} mt={2}>
-        <StylizedTitle textAlign={"center"} color={COLOR_PALLET.ghostWhite.hex}>
-          Ahoy!
-        </StylizedTitle>
-        <StylizedSubtitle textAlign={"center"}>Weather</StylizedSubtitle>
-      </Box>
+      <AppTitleText />
       <Box>
         <UnitsToggle
           onToggle={handleUnitsToggle}
@@ -159,4 +154,16 @@ const StylizedSubtitle = styled(Typography)(() => ({
   },
 }));
 
+function AppTitleText() {
+  return (
+    <>
+      <Box component={"header"} mt={2}>
+        <StylizedTitle textAlign={"center"} color={COLOR_PALLET.ghostWhite.hex}>
+          Ahoy!
+        </StylizedTitle>
+        <StylizedSubtitle textAlign={"center"}>Weather</StylizedSubtitle>
+      </Box>
+    </>
+  );
+}
 export default HomePage;
