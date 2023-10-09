@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { isNil } from "lodash";
 import { getLocalTime } from "../date-time";
 
@@ -59,4 +60,8 @@ export function getShortMonthDate(
   timeZone: string
 ): string {
   return getLocalTime(unixDateTime, timeZone).format("MM/DD");
+}
+
+export function formatTime(unixTimeData: number): string {
+  return dayjs(unixTimeData).format("MMMM D, YYYY");
 }
