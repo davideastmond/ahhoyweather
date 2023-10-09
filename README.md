@@ -1,27 +1,28 @@
-# React + TypeScript + Vite
+# Ahoy! Weather
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Search for a location and get detailed weather data.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Search any location for current, short-term and long-term weather data.
+- Option to use metric or imperial system
 
-## Expanding the ESLint configuration
+## Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React, Vite, Typescript
+- Material UI styled components, icons
+- Vitest
 
-- Configure the top-level `parserOptions` property like this:
+## 3rd Party dependencies (API)
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- Mapbox (for Geocoding) (https://www.mapbox.com/)
+- Pirate Weather (weather data) (http://pirateweather.net/)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Setup
+
+1. Clone project, navigate to the folder and run `npm i` to install dependencies
+2. Sign up for API keys for the services mentioned in the 3rd-party dependencies
+3. Create a .env file in the root folder of the project and fill in the required
+   environment variables: `VITE_MAPBOX_API_KEY` and `VITE_PIRATE_WEATHER_API_KEY`
+4. Launch the dev project by running `npm run dev`.
+5. Run tests using `npm t`
