@@ -11,12 +11,11 @@ import {
   getDayOfWeek,
   getShortMonthDate,
 } from "../../../utils/formatters/date-time-formatters";
-import {
-  formatPercentage,
-  formatTemperature,
-} from "../../../utils/formatters/formatters";
+
+import { formatPercentage } from "../../../utils/formatters/number-formatters";
 import { formatPrecipitation } from "../../../utils/formatters/precipitation-formatter";
 import { capitalizeFirstLetter } from "../../../utils/formatters/string-formatters";
+import { formatTemperature } from "../../../utils/formatters/temperature-formatter";
 import { formatWindSpeed } from "../../../utils/formatters/wind-formatters";
 import { StyledCardContainer } from "../../containers/styled-card-container/StyledCardContainer";
 import WeatherIconComponent, {
