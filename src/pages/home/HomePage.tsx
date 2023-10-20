@@ -8,6 +8,7 @@ import {
 import { useEffect, useState } from "react";
 import { PirateWeatherClient } from "../../clients/pirate-weather/pirate-weather-client";
 import { ForecastContainer } from "../../components/containers/forecast-container/Forecast-Container";
+import { LeafletMapContainer } from "../../components/containers/leaflet-map-container/Leaflet-map-container";
 import SearchableTextBar from "../../components/searchable-text-bar/Searchable-text-bar.component";
 import { UnitsToggle } from "../../components/units-toggle/Units-toggle";
 import { Coords } from "../../data/locations/models/coords";
@@ -15,6 +16,7 @@ import { PirateClientForeCastResult } from "../../data/locations/models/pirate-c
 import { Unit } from "../../data/unit";
 import { COLOR_PALLET } from "../../stylings/color-pallet/color-pallet";
 import { initializeUnits } from "../../utils/storage/unit-utils/unit-utils";
+
 function HomePage() {
   const [forecastData, setForecastData] = useState<
     PirateClientForeCastResult | undefined
@@ -98,6 +100,7 @@ function HomePage() {
           disabled={isBusy}
         />
       </Box>
+      {stateCoords && <LeafletMapContainer coords={stateCoords} />}
       {isBusy && (
         <Box display="flex" justifyContent={"center"} padding={2}>
           {" "}
