@@ -21,7 +21,7 @@ describe("Wind formatter tests", () => {
     );
   });
   describe("format wind speed tests", () => {
-    test.each([[1, 15, "si", "4 km/h N"]])(
+    test.each([[1, 15, Unit.SI, "4 km/h N"]])(
       "Given wind speed `%s`, bearing `%s` and unit `%s`, expect `%s`",
       (speed, bearing, unit, result) => {
         expect(formatWindSpeed(speed, bearing, unit as Unit)).toBe(result);
