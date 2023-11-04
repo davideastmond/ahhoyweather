@@ -96,7 +96,7 @@ function HomePage() {
       <Box>
         <UnitsToggle
           onToggle={handleUnitsToggle}
-          propsChecked={units === "si" ? false : true}
+          propsChecked={units === Unit.SI ? false : true}
           disabled={isBusy}
         />
       </Box>

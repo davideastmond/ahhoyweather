@@ -20,7 +20,7 @@ export function UnitsToggle({
 
   const handleToggle = (e: any) => {
     setChecked(e.target.checked);
-    const unit: Unit = e.target.checked ? "us" : "si";
+    const unit: Unit = e.target.checked ? Unit.US : Unit.SI;
     onToggle && onToggle(unit);
   };
 

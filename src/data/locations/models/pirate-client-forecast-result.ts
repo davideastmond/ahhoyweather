@@ -22,7 +22,7 @@ export interface PirateForecastData {
   summary: string;
   icon: WeatherIcon;
   precipProbability: number;
-  precipType: string;
+  precipType: PrecipitationType;
   temperature: number;
   apparentTemperature: number;
   humidity: number; // float

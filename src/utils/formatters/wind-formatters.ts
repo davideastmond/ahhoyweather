@@ -9,13 +9,13 @@ export function formatWindSpeed(
 ): string {
   if (isNil(windSpeed)) return "";
   switch (unit) {
-    case "us":
-    case "uk":
+    case Unit.US:
+    case Unit.UK:
       return `${Math.ceil(windSpeed).toFixed(0)} mph ${
         getWindBearing(windBearing) || ""
       }`;
-    case "si":
-    case "ca":
+    case Unit.SI:
+    case Unit.CA:
     default:
       // Default is si
       return `${Math.ceil(windSpeed * 3.6).toFixed(0)} km/h ${

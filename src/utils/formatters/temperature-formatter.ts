@@ -5,11 +5,11 @@ export function formatTemperature(temperature: number, unit?: Unit): string {
   if (isNil(temperature)) return "";
 
   switch (unit) {
-    case "us":
-    case "uk":
+    case Unit.US:
+    case Unit.UK:
       return `${temperature.toFixed(0)}° F`;
-    case "si":
-    case "ca":
+    case Unit.SI:
+    case Unit.CA:
     default:
       // Default will be si
       return `${temperature.toFixed(0)}° C`;

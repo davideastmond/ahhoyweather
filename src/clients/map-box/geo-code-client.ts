@@ -11,10 +11,9 @@ export class MapboxGeocodeClient extends BaseClient {
   }
 
   public async getGeocode(query: string): Promise<IMapboxGeocodeResult> {
-    const resourceUrl: string = "/geocoding/v5/mapbox.places";
-    const encodedQuery: string = `/${encodeURIComponent(query)}.json`;
-    const url: string = `${resourceUrl}${encodedQuery}`;
-
+    const url: string = `/geocoding/v5/mapbox.places/${encodeURIComponent(
+      query
+    )}.json`;
     return super.getData<IMapboxGeocodeResult>(url);
   }
 }

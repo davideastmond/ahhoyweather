@@ -15,7 +15,7 @@ export class PirateWeatherClient extends BaseClient {
   ): Promise<PirateClientForeCastResult> {
     return super.getData(
       `/forecast/${this.apiKey}/${coords.lat},${coords.long}?&units=${
-        units || "si"
+        units || Unit.SI
       }`
     );
   }

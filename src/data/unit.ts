@@ -1,1 +1,6 @@
-export type Unit = "ca" | "uk" | "us" | "si";
+export enum Unit {
+  CA = "ca",
+  UK = "uk",
+  US = "us",
+  SI = "si",
+}
