@@ -1,6 +1,6 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { AccordionSummary, Box, Typography } from "@mui/material";
-import { PirateClientForeCastResult } from "../../../../data/locations/models/pirate-client-forecast-result";
+import { PirateClientForecastResult } from "../../../../data/locations/models/pirate-client-forecast-result";
 import { TimeOfDay } from "../../../../data/locations/models/short-term-forcast-ranges";
 import { getTimeOfDayRangeForecast } from "../../../../utils/weather-data-utils/time-of-day-range";
 import {
@@ -10,7 +10,7 @@ import {
 import ShortTermWeatherCard from "../Short-term-weather-card";
 
 interface ShortTermContainerProps {
-  data: PirateClientForeCastResult;
+  data: PirateClientForecastResult;
 }
 export function ShortTermContainerComponent(props: ShortTermContainerProps) {
   return (

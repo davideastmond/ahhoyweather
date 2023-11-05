@@ -1,5 +1,5 @@
 import { Box, Typography, styled } from "@mui/material";
-import { PirateClientForeCastResult } from "../../../data/locations/models/pirate-client-forecast-result";
+import { PirateClientForecastResult } from "../../../data/locations/models/pirate-client-forecast-result";
 import { COLOR_PALLET } from "../../../stylings/color-pallet/color-pallet";
 import { fontTheme } from "../../../stylings/fonts/font-theme";
 import { formatDateTime } from "../../../utils/formatters/date-time-formatters";
@@ -23,7 +23,7 @@ Visibilitly
 
 // Shows current weather
 interface CurrentWeatherComponentProps {
-  data: Partial<PirateClientForeCastResult>;
+  data: Partial<PirateClientForecastResult>;
   title: string;
 }
 

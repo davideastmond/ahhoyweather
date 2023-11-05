@@ -12,14 +12,14 @@ import { LeafletMapContainer } from "../../components/containers/leaflet-map-con
 import SearchableTextBar from "../../components/searchable-text-bar/Searchable-text-bar.component";
 import { UnitsToggle } from "../../components/units-toggle/Units-toggle";
 import { Coords } from "../../data/locations/models/coords";
-import { PirateClientForeCastResult } from "../../data/locations/models/pirate-client-forecast-result";
+import { PirateClientForecastResult } from "../../data/locations/models/pirate-client-forecast-result";
 import { Unit } from "../../data/unit";
 import { COLOR_PALLET } from "../../stylings/color-pallet/color-pallet";
 import { initializeUnits } from "../../utils/storage/unit-utils/unit-utils";
 
 function HomePage() {
   const [forecastData, setForecastData] = useState<
-    PirateClientForeCastResult | undefined
+    PirateClientForecastResult | undefined
   >(undefined);
   const [forecastDataTitle, setForecastDataTitle] = useState<string>("");
   const [units, setUnits] = useState<string>("");
@@ -76,7 +76,7 @@ function HomePage() {
   const fetchForcast = async (
     coordinates: Coords,
     selectedUnit: Unit
-  ): Promise<PirateClientForeCastResult> => {
+  ): Promise<PirateClientForecastResult> => {
     const pirateClient: PirateWeatherClient = new PirateWeatherClient();
     return pirateClient.getForcast(coordinates, selectedUnit);
   };

@@ -1,13 +1,13 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { AccordionSummary, Box, Typography } from "@mui/material";
-import { PirateClientForeCastResult } from "../../../../data/locations/models/pirate-client-forecast-result";
+import { PirateClientForecastResult } from "../../../../data/locations/models/pirate-client-forecast-result";
 import {
   CustomStyledAccordionDetails,
   StyledAccordion,
 } from "../../../containers/Styled-accordion/Styled-accordion";
 import SevenDayForecastCard from "../Seven-day-forecast-card";
 interface SevenDayForecastContainerProps {
-  data: PirateClientForeCastResult;
+  data: PirateClientForecastResult;
 }
 export function SevenDayForecastContainerComponent(
   props: SevenDayForecastContainerProps

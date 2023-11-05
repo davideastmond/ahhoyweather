@@ -1,6 +1,6 @@
 import { Unit } from "../../unit";
 
-export interface PirateClientForeCastResult {
+export interface PirateClientForecastResult {
   latitude: number;
   longitude: number;
   timezone: string;

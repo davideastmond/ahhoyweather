@@ -1,4 +1,4 @@
-import { PirateClientForeCastResult } from "../../data/locations/models/pirate-client-forecast-result";
+import { PirateClientForecastResult } from "../../data/locations/models/pirate-client-forecast-result";
 import { Unit } from "../../data/unit";
 import { BaseClient } from "../base-client";
 
@@ -12,7 +12,7 @@ export class PirateWeatherClient extends BaseClient {
   public async getForcast(
     coords: { lat: number; long: number },
     units?: Unit
-  ): Promise<PirateClientForeCastResult> {
+  ): Promise<PirateClientForecastResult> {
     return super.getData(
       `/forecast/${this.apiKey}/${coords.lat},${coords.long}?&units=${
         units || Unit.SI
