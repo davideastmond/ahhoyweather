@@ -11,6 +11,7 @@ interface UnitsToggleProps {
   propsChecked: boolean;
   disabled?: boolean;
 }
+
 export function UnitsToggle({
   onToggle,
   propsChecked,

@@ -90,6 +90,32 @@ function HomePage() {
     setHasError(false);
     setErrorMessage("");
   };
+
+  const renderContent = () => {
+    if (isBusy)
+      return (
+        <Box display="flex" justifyContent={"center"} padding={2}>
+          {" "}
+          <CircularProgress />{" "}
+        </Box>
+      );
+
+    return (
+      <>
+        <Box component={"form"}>
+          <SearchableTextBar
+            label="Search"
+            onLocationMenuItemClicked={onLocationMenuItemClicked}
+            onSearchError={handleSearchBoxError}
+          />
+        </Box>
+        <Box id="forecast-container">
+          <ForecastContainer data={forecastData} title={forecastDataTitle} />
+        </Box>
+      </>
+    );
+  };
+
   return (
     <Box>
       <AppTitleText />
@@ -101,26 +127,7 @@ function HomePage() {
         />
       </Box>
       {stateCoords && <LeafletMapContainer coords={stateCoords} />}
-      {isBusy && (
-        <Box display="flex" justifyContent={"center"} padding={2}>
-          {" "}
-          <CircularProgress />{" "}
-        </Box>
-      )}
-      {!isBusy && (
-        <>
-          <Box component={"form"}>
-            <SearchableTextBar
-              label="Search"
-              onLocationMenuItemClicked={onLocationMenuItemClicked}
-              onSearchError={handleSearchBoxError}
-            />
-          </Box>
-          <Box id="forecast-container">
-            <ForecastContainer data={forecastData} title={forecastDataTitle} />
-          </Box>
-        </>
-      )}
+      {renderContent()}
       {/* Display an error*/}
       {hasError && (
         <Box mt={1}>

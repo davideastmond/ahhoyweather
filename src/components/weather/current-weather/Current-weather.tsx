@@ -26,6 +26,7 @@ interface CurrentWeatherComponentProps {
   data: Partial<PirateClientForeCastResult>;
   title: string;
 }
+
 function CurrentWeatherComponent({
   data,
   title,

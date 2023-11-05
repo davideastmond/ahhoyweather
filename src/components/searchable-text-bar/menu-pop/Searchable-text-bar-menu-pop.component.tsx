@@ -18,6 +18,7 @@ interface SearchableTextBarMenuPopProps {
     coords: Coords;
   }) => void;
 }
+
 function SearchableTextBarMenuPop(props: SearchableTextBarMenuPopProps) {
   const handleTextBarMenuPopClose = ({
     place_name,
@@ -29,6 +30,7 @@ function SearchableTextBarMenuPop(props: SearchableTextBarMenuPopProps) {
     props.onMenuItemClick && props.onMenuItemClick({ place_name, coords });
     props.onHandleMenuClose();
   };
+
   return (
     <Box>
       <StyledPopper
@@ -66,4 +68,5 @@ const StyledPopper = styled(Popper)((props) => ({
     maxWidth: "100%",
   },
 }));
+
 export default SearchableTextBarMenuPop;
