@@ -13,7 +13,6 @@ export function formatPrecipitation(
 ): string {
   if (isNil(amount)) return "";
   // Default is milimeteres (metric)
-  const defaultLabel: string = `${amount}mm`;
   switch (unit) {
     case Unit.UK:
     case Unit.US:
@@ -22,6 +21,6 @@ export function formatPrecipitation(
     case Unit.CA:
     default:
       if (type === PrecipitationType.Snow) return `${amount}cm`;
-      return defaultLabel;
+      return `${amount}mm`;
   }
 }
