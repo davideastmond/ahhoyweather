@@ -19,7 +19,14 @@ interface SearchableTextBarMenuPopProps {
   }) => void;
 }
 
-function SearchableTextBarMenuPop(props: SearchableTextBarMenuPopProps) {
+function SearchableTextBarMenuPop({
+  onHandleMenuClose,
+  onMenuItemClick,
+  query,
+  searchResults,
+  open,
+  anchorElement,
+}: SearchableTextBarMenuPopProps) {
   const handleTextBarMenuPopClose = ({
     place_name,
     coords,
@@ -27,25 +34,25 @@ function SearchableTextBarMenuPop(props: SearchableTextBarMenuPopProps) {
     place_name: string;
     coords: Coords;
   }) => {
-    props.onMenuItemClick && props.onMenuItemClick({ place_name, coords });
-    props.onHandleMenuClose();
+    onMenuItemClick && onMenuItemClick({ place_name, coords });
+    onHandleMenuClose();
   };
 
   return (
     <Box>
       <StyledPopper
         id={"pop-menu"}
-        open={props.open}
-        anchorEl={props.anchorElement}
-        sx={{}}
+        open={open}
+        anchorEl={anchorElement}
+        sx={{ zIndex: 1000 }}
       >
-        {props.searchResults?.features &&
-          props.searchResults.features.map((feature) => (
+        {searchResults?.features &&
+          searchResults.features.map((feature) => (
             <SelectableSearchResultItem
               key={feature.id}
               id={feature.id}
               place_name={feature.place_name}
-              searchQuery={props.query}
+              searchQuery={query}
               onClick={handleTextBarMenuPopClose}
               coords={{
                 long: feature.center[0],

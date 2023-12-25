@@ -9,9 +9,9 @@ import SevenDayForecastCard from "../Seven-day-forecast-card";
 interface SevenDayForecastContainerProps {
   data: PirateClientForecastResult;
 }
-export function SevenDayForecastContainerComponent(
-  props: SevenDayForecastContainerProps
-) {
+export function SevenDayForecastContainerComponent({
+  data,
+}: SevenDayForecastContainerProps) {
   return (
     <Box mt={2}>
       <StyledAccordion>
@@ -24,11 +24,11 @@ export function SevenDayForecastContainerComponent(
         </AccordionSummary>
         <CustomStyledAccordionDetails>
           <Box display="flex" justifyContent="space-between" flexWrap={"wrap"}>
-            {props.data.daily.data.map((dailyData) => (
+            {data.daily.data.map((dailyData) => (
               <SevenDayForecastCard
                 element={dailyData}
-                timezone={props.data.timezone}
-                unit={props.data.flags.units}
+                timezone={data.timezone}
+                unit={data.flags.units}
               />
             ))}
           </Box>

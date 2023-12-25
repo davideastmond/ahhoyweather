@@ -109,6 +109,9 @@ function HomePage() {
             onSearchError={handleSearchBoxError}
           />
         </Box>
+        <Box display="flex" justifyContent={"center"} pt={3} pb={3}>
+          {stateCoords && <LeafletMapContainer coords={stateCoords} />}
+        </Box>
         <Box id="forecast-container">
           <ForecastContainer data={forecastData} title={forecastDataTitle} />
         </Box>
@@ -118,15 +121,14 @@ function HomePage() {
 
   return (
     <Box>
-      <AppTitleText />
-      <Box>
+      <Box justifyContent={"right"} display="flex">
         <UnitsToggle
           onToggle={handleUnitsToggle}
-          propsChecked={units === Unit.SI ? false : true}
+          propsChecked={units !== Unit.SI}
           disabled={isBusy}
         />
       </Box>
-      {stateCoords && <LeafletMapContainer coords={stateCoords} />}
+      <AppTitleText />
       {renderContent()}
       {/* Display an error*/}
       {hasError && (
